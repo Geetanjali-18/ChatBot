@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Bot</title>
+    <link rel="stylesheet" href="chatBot.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="chatCss.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- CHAT BOT -->
+
+    <div class="chat-bar-collapsible">
+      <button id="chat-button" type="button" class="collapsible">
+        Chat with us!!
+        <i id="chat-icon" style="color: #000" class="fa-solid fa-comments"></i>
+      </button>
+
+      <div class="content">
+        <div class="full-chat-block">
+          <!-- MESSAGE CONTAINER -->
+          <div class="outer-container">
+            <div class="chat-container">
+              <!-- MESSAGES -->
+              <div class="chatbox">
+                
+                <p id="botstarterMessage" class="botText">
+                  <!-- <span>Loading....</span> -->
+                </p>
+              </div>
+
+              <!-- USER INPUT BOX -->
+
+              <div class="chat-bar-input-block">
+                <div id="userInput">
+                  <input
+                    type="text"
+                    id="textInput"
+                    class="input-box"
+                    type="text"
+                    name="msg"
+                    placeholder="Tap 'Enter' to send "
+                  />
+                  
+                </div>
+
+                <div class="chat-bar-icons">
+                  <i
+                    id="chat-icon"
+                    style="color: crimson"
+                    class="fa fa-fw fa-heart"
+                    onclick="heartClicked()"
+                  ></i>
+
+                  <i
+                    id="chat-icon"
+                    style="color: grey"
+                    class="fa-solid fa-paper-plane"
+                    onclick="sendButton()"
+                  ></i>
+                </div>
+              </div>
+
+              <div id="chat-bar-bottom">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="chatBot.js"></script>
+  </body>
+</html>
