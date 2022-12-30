@@ -4,9 +4,6 @@ coll.addEventListener('click',function(){
     content.classList.toggle("active");
 })
 
-// $(".collapsible").click(function(){
-//   $(".content").toggle(1000);
-// });
 
 function msgTime(){
       var date= new Date();
@@ -24,7 +21,7 @@ function msgTime(){
 }
 
 function firstMessage(){
-  let firstMessage="How it's going?";
+  let firstMessage="Hey...Do you want to listen some jokes?...Say yes or no...";
   var element=document.getElementById('botstarterMessage');
   element.innerHTML= firstMessage;
   let time=msgTime();
@@ -42,7 +39,6 @@ function showResponse(userText){
   showbotResponse.classList.add('botText');
   var response=getBotResponse(userText);
   showbotResponse.innerHTML=response;
-  console.log(userText);
   document.querySelector('.chatbox').appendChild(showbotResponse);
 
   let time=msgTime();
@@ -59,7 +55,6 @@ function getResponse(){
     var showUserText= document.createElement('p');
     showUserText.classList.add('userText');
     showUserText.innerHTML=userText;
-    console.log(userText);
     document.querySelector('.chatbox').appendChild(showUserText);
     let time=msgTime();
     var timespanuser=document.createElement('span');
@@ -100,12 +95,6 @@ function heartClicked(){
 
 
 
-
-
-
-
-
-
 // RESPONSES 
 
 function getBotResponse(userText){
@@ -113,6 +102,24 @@ function getBotResponse(userText){
  
   if(userText=="hello"||userText=="hii"||userText=="Hello"||userText=="Hii"){
     return "hello there!!";
+  }
+  else if(userText=="Yes"||userText=="yes"){
+  
+
+    const http= new XMLHttpRequest();
+    var text="";
+    http.open("GET",'https://official-joke-api.appspot.com/random_joke',false);
+    http.onload=function(){
+       res=this.responseText;
+       var obj= JSON.parse(res);
+       text=obj.setup+"<br>"+obj.punchline;
+    }
+    http.send();
+    console.log(text);
+   return "here u go...<br>" +text+"<br><br> want another joke? ";
+  }
+  else if(userText=="no"||userText=="No"){
+    return "ohkk...."
   }
   else if(userText=="bye"||userText=="Bye"){
     return "Bye... Talk to you later!";
@@ -123,5 +130,8 @@ function getBotResponse(userText){
   }
   else if(userText=="i am fine"){
     return "Good."
+  }
+  else{
+    return "can't answer...please say something else"
   }
 }
